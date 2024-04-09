@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../components/page_buttons.dart';
+import '../pages/calculator_page.dart';
 import '../pages/car_number_guesing.dart';
 import '../pages/counter_page.dart';
 import '../pages/equation_solver.dart';
@@ -186,7 +187,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const CounterPage(),
+              builder: (context) => const CalculatorPage(),
             ),
           );
         },
