@@ -8,9 +8,11 @@ import '../pages/bmi_page.dart';
 import '../pages/calculator_page.dart';
 import '../pages/car_number_guesing.dart';
 import '../pages/counter_page.dart';
+import '../pages/currency_converter_page.dart';
 import '../pages/equation_solver.dart';
 import '../pages/home_number_guessing.dart';
 import '../pages/phone_number_guessing.dart';
+import '../pages/todo_page.dart';
 import '../pages/user_random.dart';
 import '../pages/weather_page.dart';
 
@@ -236,7 +238,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const CounterPage(),
+              builder: (context) => const TodoPage(),
             ),
           );
         },
@@ -248,7 +250,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const CounterPage(),
+              builder: (context) => const CurrencyConverterPage(),
             ),
           );
         },
