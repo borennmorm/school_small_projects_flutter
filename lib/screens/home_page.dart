@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../components/page_buttons.dart';
+import '../pages/bmi_page.dart';
 import '../pages/calculator_page.dart';
 import '../pages/car_number_guesing.dart';
 import '../pages/counter_page.dart';
@@ -32,6 +33,20 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: const Text('លំហាត់'),
           backgroundColor: Colors.grey[300],
+          actions: [
+            GestureDetector(
+              onTap: () {
+                _launchTelegram();
+              },
+              child: CircleAvatar(
+                radius: 15,
+                backgroundImage: AssetImage(
+                  'assets/images/telegram.png',
+                ),
+              ),
+            ),
+            SizedBox(width: 16),
+          ],
         ),
         backgroundColor: Colors.grey[200],
         body: Column(
@@ -67,7 +82,8 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+                padding: const EdgeInsets.only(
+                    left: 30, right: 30, bottom: 30, top: 10),
                 children: _getPageButtons(),
               ),
             ),
@@ -86,6 +102,15 @@ class _HomePageState extends State<HomePage> {
 
   // Function to launch URL
   void launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  static _launchTelegram() async {
+    const url = 'https://t.me/aboutbenro';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -199,7 +224,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const CounterPage(),
+              builder: (context) => const BMIPage(),
             ),
           );
         },
@@ -279,6 +304,30 @@ class _HomePageState extends State<HomePage> {
       PageButton(
         imagePath: 'assets/images/budget.png',
         pageTitle: 'តាមដានចំណាយ',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CounterPage(),
+            ),
+          );
+        },
+      ),
+      PageButton(
+        imagePath: 'assets/images/notepad.png',
+        pageTitle: 'កត់ត្រា',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CounterPage(),
+            ),
+          );
+        },
+      ),
+      PageButton(
+        imagePath: 'assets/images/notepad.png',
+        pageTitle: 'កត់ត្រា',
         onTap: () {
           Navigator.push(
             context,
